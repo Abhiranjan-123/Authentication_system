@@ -10,10 +10,13 @@ function VerifyEmailContent() {
   
   const [status, setStatus] = useState('Verifying...');
 
- useEffect(() => {
+  // Dynamic Backend URL
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
+  useEffect(() => {
     if (token && email) {
       // POST ki jagah GET request use karo aur query params pass karo
-      axios.get(`http://localhost:5000/api/auth/verify-email?token=${token}&email=${email}`)
+      axios.get(`${API_URL}/api/auth/verify-email?token=${token}&email=${email}`)
         .then(res => {
           setStatus('Email verified successfully! You can now log in.');
         })
