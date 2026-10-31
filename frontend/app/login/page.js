@@ -10,7 +10,6 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  // Dynamic Backend URL: Agar Vercel par env variable set hoga toh woh use hoga, nahi toh localhost
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 
   const handleLogin = async (e) => {
@@ -24,7 +23,6 @@ export default function LoginPage() {
         { withCredentials: true }
       );
 
-      // Backend response se token nikal kar check karo
       const token = res.data.token || res.data.accessToken;
 
       if (token) {
@@ -35,7 +33,6 @@ export default function LoginPage() {
         return;
       }
 
-      // Successful hone par dashboard1 par redirect karo
       router.push('/dashboard1');
 
     } catch (err) {
@@ -60,13 +57,9 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Email and Password Login */}
         <form onSubmit={handleLogin} className="space-y-4">
-
           <div>
-            <label className="mb-1 block text-sm font-medium">
-              Email
-            </label>
+            <label className="mb-1 block text-sm font-medium">Email</label>
             <input
               type="email"
               value={email}
@@ -78,9 +71,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium">
-              Password
-            </label>
+            <label className="mb-1 block text-sm font-medium">Password</label>
             <input
               type="password"
               value={password}
@@ -92,9 +83,7 @@ export default function LoginPage() {
           </div>
 
           <div className="flex items-center justify-between text-sm mb-4">
-            <label className="flex items-center text-gray-400">
-              {/* Remember me checkbox if needed */}
-            </label>
+            <label className="flex items-center text-gray-400"></label>
             <a href="/forgot-password" className="text-indigo-400 hover:underline">Forgot password?</a>
           </div>
 
@@ -104,17 +93,14 @@ export default function LoginPage() {
           >
             Login
           </button>
-
         </form>
 
-        {/* OR Divider */}
         <div className="my-6 flex items-center gap-4">
           <div className="h-px flex-1 bg-gray-600"></div>
           <span className="text-sm text-gray-400">OR</span>
           <div className="h-px flex-1 bg-gray-600"></div>
         </div>
 
-        {/* Google Login */}
         <a
           href={`${API_URL}/api/auth/google`}
           className="flex w-full items-center justify-center gap-3 rounded border border-gray-300 bg-white py-2.5 font-semibold text-gray-900 shadow-sm transition duration-200 hover:bg-gray-100"
@@ -127,13 +113,9 @@ export default function LoginPage() {
           Continue with Google
         </a>
 
-        {/* Sign Up */}
         <p className="mt-6 text-center text-sm text-gray-400">
           Don't have an account?{' '}
-          <a
-            href="/signup"
-            className="text-indigo-400 hover:underline"
-          >
+          <a href="/signup" className="text-indigo-400 hover:underline">
             Sign up
           </a>
         </p>
