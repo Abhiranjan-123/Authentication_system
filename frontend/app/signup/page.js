@@ -11,7 +11,6 @@ export default function SignupPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  // Dynamic Backend URL for Google OAuth link
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 
   const handleSignup = async (e) => {
@@ -51,14 +50,12 @@ export default function SignupPage() {
           Sign Up
         </button>
 
-        {/* Divider */}
         <div className="flex items-center my-4">
           <div className="flex-grow border-t border-gray-700"></div>
           <span className="px-3 text-gray-400 text-sm">OR</span>
           <div className="flex-grow border-t border-gray-700"></div>
         </div>
 
-        {/* Google OAuth Button */}
         <a 
           href={`${API_URL}/api/auth/google`} 
           className="w-full flex items-center justify-center gap-3 py-3 bg-white text-gray-900 rounded font-semibold hover:bg-gray-100 transition duration-200 shadow-sm"
