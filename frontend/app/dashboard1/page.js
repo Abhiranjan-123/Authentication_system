@@ -32,10 +32,12 @@ function Dashboard1Content() {
       return;
     }
 
-    // 3. Backend se real-time Bins data fetch karo
+
+   // 3. Backend se real-time Bins data fetch karo
     const fetchDashboardData = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/bins', {
+        const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+        const res = await axios.get(`${API_URL}/api/bins`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
