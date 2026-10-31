@@ -11,6 +11,9 @@ export default function SignupPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
+  // Dynamic Backend URL for Google OAuth link
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
   const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
@@ -57,7 +60,7 @@ export default function SignupPage() {
 
         {/* Google OAuth Button */}
         <a 
-          href="http://localhost:5000/api/auth/google" 
+          href={`${API_URL}/api/auth/google`} 
           className="w-full flex items-center justify-center gap-3 py-3 bg-white text-gray-900 rounded font-semibold hover:bg-gray-100 transition duration-200 shadow-sm"
         >
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="w-5 h-5" alt="Google" />
