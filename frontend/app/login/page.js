@@ -10,13 +10,16 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
+  // Dynamic Backend URL: Agar Vercel par env variable set hoga toh woh use hoga, nahi toh localhost
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/auth/login',
+        `${API_URL}/api/auth/login`,
         { email, password },
         { withCredentials: true }
       );
@@ -113,7 +116,7 @@ export default function LoginPage() {
 
         {/* Google Login */}
         <a
-          href="http://localhost:5000/api/auth/google"
+          href={`${API_URL}/api/auth/google`}
           className="flex w-full items-center justify-center gap-3 rounded border border-gray-300 bg-white py-2.5 font-semibold text-gray-900 shadow-sm transition duration-200 hover:bg-gray-100"
         >
           <img
