@@ -10,7 +10,12 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+  //const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+  // ❌ Purana line:
+// const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
+// ✅ Naya aur 100% Working Line:
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://authentication-system-47z5.onrender.com';
 
   const handleLogin = async (e) => {
     e.preventDefault();
