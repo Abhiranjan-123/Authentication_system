@@ -11,7 +11,9 @@ export default function SignupPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+  //const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+  // ✅ Naya aur 100% Working Line:
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://authentication-system-47z5.onrender.com';
 
   const handleSignup = async (e) => {
     e.preventDefault();
